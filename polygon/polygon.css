@@ -1,0 +1,185 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300);
+
+html,
+body {
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+body { /*background color and font*/
+  background: #404853;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+}
+
+a { /*take out the underline of the hypertext*/
+  text-decoration: none;
+}
+
+ul { /*organize the triangle into a polygon*/
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+li { /*take out the dot before each sentence because its in a list form*/
+  list-style-type: none;
+}
+
+/*=================================== container
+*/
+
+.hexagon {
+  position: absolute;
+  /*arrange the polygon in the middle of the page*/
+  top: 50%;
+  left: 50%;
+  /*help organizing the form in the middle more precisely*/
+  margin-top: -30px;
+  margin-left: -30px;
+  /*changing the triangle on the left side like moving out*/
+  width: 60px;
+  transform-origin: center;
+  transform: scale(1.00005); /* hack Firefox smooth edge */
+}
+
+/*=================================== top and bottom triangle
+*/
+
+.polygon_top,.polygon_bottom {
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  position: absolute;
+  /*changing the width of the EACH triangle*/
+  width: 0px;
+  /*move the triangle down away from the center*/
+  height: 0px;
+
+  /*affect of the triangle when its being hover*/
+  transition: width 0.3s ease-in-out, border 0.4s linear, border-radius 0.5s ease-in-out;
+}
+
+/*hide the words inside the triangle*/
+.polygon_top a,.polygon_bottom a {
+
+   /*color is being change when the mouse is hover, when the mouse stop hover, the word changes back to the blue*/
+  color: rgba(55, 55, 55, 0);
+
+  /*display the text inside the shape when its being hover*/
+  display: block;
+
+  /*font size inside the list*/
+  font-size: 0em;
+
+  /*keep the word stay all uppercase while it was being show*/
+  text-transform: uppercase;
+
+  /*no affect much*/
+  width: 100%;
+  transition: color, font-size 0.3s;
+}
+
+.polygon_top:nth-child(1),
+.polygon_top:nth-child(3),
+.polygon_bottom:nth-child(4),
+.polygon_bottom:nth-child(6) {
+  cursor: pointer;
+}
+
+/*when the mouse over into the first, third, fourth and sixth triangle*/
+.polygon_top:nth-child(1):hover > a,
+.polygon_top:nth-child(3):hover > a,
+.polygon_bottom:nth-child(4):hover > a,
+.polygon_bottom:nth-child(6):hover > a {
+  /*font color and the font size inside the polygon*/
+  color: black;
+  font-size: 1em;
+}
+
+.polygon_top:nth-child(1) {
+  border-bottom: 30px solid #9b59b6;
+  /*keep the triangle stay connect with the other 5*/
+  right: 0;
+  transform: translateX(-30px) translateY(-15px);
+}
+
+.polygon_top:nth-child(1):hover {
+  /*changed the corner of the first box to more round*/
+  border-radius: 5px 0 0 4px;
+  border-left: 40px solid #9b59b6;
+  /*extend the width of the triangle when its got hover*/
+  width: 90px;
+  z-index: 100;
+}
+
+.polygon_top:nth-child(1) > a {
+  /*keep the word above the bottom line*/
+  line-height: 40px;
+}
+
+/*second triangle, which is the middle triangle at the bottom row*/
+.polygon_top:nth-child(2) {
+  border-bottom: 30px solid #d0b2dd;
+  transform: translateX(12px) translateY(15px);
+}
+
+.polygon_top:nth-child(3) {
+  border-bottom: 30px solid #b07cc6;
+  left: 0;
+  transform: translateX(30px) translateY(-15px);
+}
+
+.polygon_top:nth-child(3):hover {
+  border-radius: 0 4px 4px 0;
+  border-right: 18px solid #b07cc6;
+  width: 120px;
+  z-index: 100;
+}
+
+.polygon_top:nth-child(3) > a {
+  text-align: right;
+  line-height: 30px;
+}
+
+.polygon_bottom:nth-child(4) {
+  border-top: 30px solid #dbc3e5;
+  right: 0;
+  transform: translateX(-30px) translateY(15px);
+}
+
+.polygon_bottom:nth-child(4):hover {
+  border-radius: 4px 0 0 4px;
+  border-left: 18px solid #dbc3e5;
+  width: 120px;
+  z-index: 100;
+}
+
+.polygon_bottom:nth-child(4) > a {
+  text-align: left;
+  line-height: 30px;
+  margin-top: -30px;
+}
+
+/*middle triangle on the first row*/
+.polygon_bottom:nth-child(5) {
+  border-top: 30px solid #a66bbe;
+  transform: translateX(12px) translateY(-15px);
+}
+
+.polygon_bottom:nth-child(6) {
+  border-top: 30px solid #c6a0d5;
+  transform: translateX(30px) translateY(15px);
+}
+
+.polygon_bottom:nth-child(6):hover {
+  border-radius: 0 4px 4px 0;
+  border-right: 18px solid #c6a0d5;
+  width: 120px;
+  z-index: 100;
+}
+
+.polygon_bottom:nth-child(6) > a {
+  text-align: right;
+  line-height: 30px;
+  margin-top: -30px;
+}
